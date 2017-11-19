@@ -7,7 +7,7 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-
+node_modules/
 build/
 bld/
 [Bb]in/
