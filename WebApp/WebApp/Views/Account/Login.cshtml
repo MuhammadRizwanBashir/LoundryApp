@@ -1,0 +1,70 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+    <!-- Container-fluid starts -->
+    <div class="container-fluid">
+        <div class="row">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-sm-12">
+                    <div class="login-card card-block">
+                        <form class="md-float-material">
+                            <div class="text-center">
+                                <img src="/assets/images/logo-blue.png">
+                            </div>
+                            <h3 class="text-center txt-primary">
+                                @ViewBag.Title
+                            </h3>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="md-input-wrapper">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "md-form-control" })
+                                <label>UserName</label>
+                            </div>
+                            <div class="md-input-wrapper">
+                                @Html.PasswordFor(m => m.Password, new { @class = "md-form-control" })
+                                <label>Password</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple m-b-25">
+                                        
+                                        @Html.CheckBoxFor(model=>model.RememberMe)
+                                        <div class="captions">Remember Me</div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-12 forgot-phone text-right">
+                                    @Html.ActionLink("Forgot password?", "ForgotPassword")
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10 offset-xs-1">
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                </div>
+                            </div>
+                            <!-- <div class="card-footer"> -->
+                            <div class="col-sm-12 col-xs-12 text-center">
+                                <span class="text-muted">Don't have an account?</span>
+                                <a href="/Account/Register" class="f-w-600 p-l-5">Sign up Now</a>
+                            </div>
+
+                            <!-- </div> -->
+                        </form>
+                        <!-- end of form -->
+                    </div>
+                    <!-- end of login-card -->
+                </div>
+            <!-- end of col-sm-12 -->
+            }
+        </div>
+        <!-- end of row -->
+    </div>
+    <!-- end of container-fluid -->
+</section>
+
+
